@@ -18,3 +18,8 @@ export const getId = async (id: number) => {
   const persona = await api.get(`notificaciones/${id}`);
   return persona;
 };
+
+export const updateEstado = async (id: number) => {
+  const { data } = await api.patch(`notificaciones/update/${id}`);
+  return data;
+};

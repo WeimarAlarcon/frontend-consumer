@@ -8,12 +8,17 @@
         <div class="row">
           <div class="col-12 q-pl-md">
             <q-item-label class="text-h7"
-              ><strong>Fecha y Hora: </strong
-              >{{ formatDateTime(notificacion.fechaHora) }}</q-item-label
+              ><strong>Fecha: </strong
+              >{{ formatDate(notificacion.fechaHora) }}</q-item-label
+            >
+            <q-item-label class="text-h7"
+              ><strong>Hora: </strong
+              >{{ formatTime(notificacion.fechaHora) }}</q-item-label
             >
             <q-item-label class="text-h7"
               ><strong>Mensaje:</strong>{{ notificacion.mensaje }}</q-item-label
             >
+            <q-separator color="dark" />
             <q-list dense padding>
               <q-item>
                 <q-item-section
@@ -113,11 +118,17 @@ const emit = defineEmits<{
   'update:view': [value: boolean];
 }>();
 
-const formatDateTime = (dateString: string | number | Date) => {
+const formatDate = (dateString: string | number | Date) => {
   const options: Intl.DateTimeFormatOptions = {
     year: 'numeric',
     month: '2-digit',
     day: '2-digit',
+  };
+  const date = new Date(dateString);
+  return date.toLocaleString('es-ES', options); // Cambia 'es-ES' si necesitas otro idioma
+};
+const formatTime = (dateString: string | number | Date) => {
+  const options: Intl.DateTimeFormatOptions = {
     hour: '2-digit',
     minute: '2-digit',
     second: '2-digit',

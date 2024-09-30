@@ -76,18 +76,18 @@ const columns: Array<{
   name: string;
   label: string;
   required?: boolean;
-  align?: 'center';
+  align?: 'center' | 'left' | 'right';
   field: string | ((row: RowData) => string | number); // Especifica el tipo de retorno
   format?: (val: string | number | boolean) => string; // Restringe el formato a tipos específicos
   sortable?: boolean;
   sort?: (a: string | number, b: string | number) => number; // Tipos específicos para la comparación
 }> = [
-  {
-    name: 'index',
-    label: '#',
-    field: 'index',
-    sortable: true,
-  },
+  // {
+  //   name: 'index',
+  //   label: '#',
+  //   field: 'index',
+  //   sortable: true,
+  // },
   {
     name: 'actions',
     label: 'Acciones',
